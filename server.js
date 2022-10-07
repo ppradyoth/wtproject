@@ -1,5 +1,3 @@
-/* eslint-disable no-console */
-/* eslint-disable import/no-unresolved */
 const path = require('path');
 const express = require('express');
 
@@ -8,15 +6,12 @@ const server = require('http').Server(app);
 const socket = require('socket.io');
 
 const io = socket(server);
-
 const PID = process.pid;
 const PORT = process.env.PORT || 3000;
 const users = {};
 let usersNum = 0;
 
 app.use(express.static(path.join(__dirname, 'public')));
-
-// eslint-disable-next-line no-shadow
 io.on('connection', (socket) => {
   console.log(`The socket is connected! Socket id: ${socket.id}`);
   usersNum += 1;
